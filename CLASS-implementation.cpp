@@ -13,7 +13,33 @@ class Queue{
     }
     
     void push(int val){
-        
+        if(front == rear) // empty()
+        {
+            arr[rear] = val ;
+            rear ++ ; 
+        }
+        else{
+            cout<<"queue is full :"<<endl ; 
+        }
+    }
+    void pop(){
+        if(front!=rear){
+            arr[front] = -1 ;
+            front++ ; 
+        }else{
+            cout<<"stack is empty , nothing to pop" <<endl;
+        }
+    }
+    bool empty(){
+        if(front == rear) return true ;
+        else 
+        return false ; 
+    }
+    int top(){
+        if(!empty()){
+            return front ;
+        }
+
     }
 };
 using namespace std;
