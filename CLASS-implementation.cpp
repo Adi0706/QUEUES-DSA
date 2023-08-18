@@ -1,4 +1,5 @@
 #include<iostream>
+using namespace std ; 
 class Queue{
     private:
     int *arr ; 
@@ -13,21 +14,24 @@ class Queue{
     }
     
     void push(int val){
-        if(front == rear) // empty()
-        {
-            arr[rear] = val ;
-            rear ++ ; 
-        }
-        else{
-            cout<<"queue is full :"<<endl ; 
+        if(rear == size){
+            cout<<"queue is full"<<endl;
+        }else {
+            arr[rear] = val ; 
+            rear ++ ;  
         }
     }
     void pop(){
-        if(front!=rear){
-            arr[front] = -1 ;
-            front++ ; 
-        }else{
-            cout<<"stack is empty , nothing to pop" <<endl;
+        if(front == rear ){
+            cout<<"empty "<<endl ; 
+        }
+        else{
+            arr[front] = -1 ; 
+            front ++ ;
+            if(front == rear){
+                front = 0 ;
+                rear = 0 ; 
+            }
         }
     }
     bool empty(){
@@ -35,15 +39,29 @@ class Queue{
         else 
         return false ; 
     }
-    int top(){
-        if(!empty()){
-            return front ;
-        }
 
+    int top(){
+        if(front == rear){
+            return -1;
+        }else {
+            return arr[front] ; 
+        }
     }
 };
-using namespace std;
+
 int main()
 {
+    Queue q(5) ; 
+
+    q.push(1) ;
+    q. push(2) ; 
+    q. push(3) ; 
+
+
+    q.pop();
+        // cout<<"top element is : "<< q.top() ; 
+
+   cout<<"the queue is empty or not ? "<< q.empty() ; 
+
 return 0;
 }
